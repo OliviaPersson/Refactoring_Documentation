@@ -20,21 +20,7 @@ namespace Refactoring_Documentation
         static void Main(string[] args)
         {
             List<Person> Dict = new List<Person>();
-
-            Console.Write("Laddar adresslistan ... ");
-            using (StreamReader fileStream = new StreamReader(@"..\..\address.lis"))
-            {
-                while (fileStream.Peek() >= 0)
-                {
-                    string line = fileStream.ReadLine();
-                    // Console.WriteLine(line);
-                    string[] word = line.Split('#');
-                    // Console.WriteLine("{0}, {1}, {2}, {3}", word[0], word[1], word[2], word[3]);
-                    Person P = new Person(word[0], word[1], word[2], word[3]);
-                    Dict.Add(P);
-                }
-            }
-            Console.WriteLine("klart!");
+            LoadFile(Dict);
 
             Console.WriteLine("Hej och välkommen till adresslistan");
             Console.WriteLine("Skriv 'sluta' för att sluta!");
@@ -120,6 +106,23 @@ namespace Refactoring_Documentation
                     Console.WriteLine("Okänt kommando: {0}", command);
                 }
             } while (command != "sluta");
+        }
+        private static void LoadFile(List<Person> Dict)
+        {
+            Console.Write("Laddar adresslistan ... ");
+            using (StreamReader fileStream = new StreamReader(@"..\..\address.lis"))
+            {
+                while (fileStream.Peek() >= 0)
+                {
+                    string line = fileStream.ReadLine();
+                    // Console.WriteLine(line);
+                    string[] word = line.Split('#');
+                    // Console.WriteLine("{0}, {1}, {2}, {3}", word[0], word[1], word[2], word[3]);
+                    Person P = new Person(word[0], word[1], word[2], word[3]);
+                    Dict.Add(P);
+                }
+            }
+            Console.WriteLine("klart!");
         }
     }
 }
