@@ -35,16 +35,7 @@ namespace Refactoring_Documentation
                 }
                 else if (command == "ny")
                 {
-                    Console.WriteLine("Lägger till ny person");
-                    Console.Write("  1. ange namn:    ");
-                    string name = Console.ReadLine();
-                    Console.Write("  2. ange adress:  ");
-                    string adress = Console.ReadLine();
-                    Console.Write("  3. ange telefon: ");
-                    string telefon = Console.ReadLine();
-                    Console.Write("  4. ange email:   ");
-                    string email = Console.ReadLine();
-                    Dict.Add(new Person(name, adress, telefon, email));
+                    AddNewPerson(Dict);
                 }
                 else if (command == "ta bort")
                 {
@@ -107,6 +98,21 @@ namespace Refactoring_Documentation
                 }
             } while (command != "sluta");
         }
+
+        private static void AddNewPerson(List<Person> Dict)
+        {
+            Console.WriteLine("Lägger till ny person");
+            Console.Write("  1. ange namn:    ");
+            string name = Console.ReadLine();
+            Console.Write("  2. ange adress:  ");
+            string adress = Console.ReadLine();
+            Console.Write("  3. ange telefon: ");
+            string telefon = Console.ReadLine();
+            Console.Write("  4. ange email:   ");
+            string email = Console.ReadLine();
+            Dict.Add(new Person(name, adress, telefon, email));
+        }
+
         private static void LoadFile(List<Person> Dict)
         {
             Console.Write("Laddar adresslistan ... ");
