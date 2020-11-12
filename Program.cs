@@ -47,38 +47,43 @@ namespace Refactoring_Documentation
                 }
                 else if (command == "ändra")
                 {
-                    Console.Write("Vem vill du ändra (ange namn): ");
-                    string villÄndra = Console.ReadLine();
-                    int found = -1;
-                    for (int i = 0; i < Dict.Count(); i++)
-                    {
-                        if (Dict[i].namn == villÄndra) found = i;
-                    }
-                    if (found == -1)
-                    {
-                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villÄndra);
-                    }
-                    else
-                    {
-                        Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
-                        string fältAttÄndra = Console.ReadLine();
-                        Console.Write("Vad vill du ändra {0} på {1} till: ", fältAttÄndra, villÄndra);
-                        string nyttVärde = Console.ReadLine();
-                        switch (fältAttÄndra)
-                        {
-                            case "namn": Dict[found].namn = nyttVärde; break;
-                            case "adress": Dict[found].adress = nyttVärde; break;
-                            case "telefon": Dict[found].telefon = nyttVärde; break;
-                            case "email": Dict[found].email = nyttVärde; break;
-                            default: break;
-                        }
-                    }
+                    UpdatePersonInList(Dict);
                 }
                 else
                 {
                     Console.WriteLine("Okänt kommando: {0}", command);
                 }
             } while (command != "sluta");
+        }
+
+        private static void UpdatePersonInList(List<Person> Dict)
+        {
+            Console.Write("Vem vill du ändra (ange namn): ");
+            string villÄndra = Console.ReadLine();
+            int found = -1;
+            for (int i = 0; i < Dict.Count(); i++)
+            {
+                if (Dict[i].namn == villÄndra) found = i;
+            }
+            if (found == -1)
+            {
+                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villÄndra);
+            }
+            else
+            {
+                Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
+                string fältAttÄndra = Console.ReadLine();
+                Console.Write("Vad vill du ändra {0} på {1} till: ", fältAttÄndra, villÄndra);
+                string nyttVärde = Console.ReadLine();
+                switch (fältAttÄndra)
+                {
+                    case "namn": Dict[found].namn = nyttVärde; break;
+                    case "adress": Dict[found].adress = nyttVärde; break;
+                    case "telefon": Dict[found].telefon = nyttVärde; break;
+                    case "email": Dict[found].email = nyttVärde; break;
+                    default: break;
+                }
+            }
         }
 
         private static void ShowList(List<Person> Dict)
