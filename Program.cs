@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,10 @@ namespace Refactoring_Documentation
         public Person(string N, string A, string T, string E)
         {
             namn = N; adress = A; telefon = T; email = E;
+        }
+        public void Print()
+        {
+            Console.WriteLine("{0}, {1}, {2}, {3}", namn, adress, telefon, email);
         }
     }
     class Program
@@ -91,7 +96,7 @@ namespace Refactoring_Documentation
             for (int i = 0; i < Dict.Count(); i++)
             {
                 Person P = Dict[i];
-                Console.WriteLine("{0}, {1}, {2}, {3}", P.namn, P.adress, P.telefon, P.email);
+                P.Print();
             }
         }
 
