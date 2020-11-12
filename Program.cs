@@ -39,21 +39,7 @@ namespace Refactoring_Documentation
                 }
                 else if (command == "ta bort")
                 {
-                    Console.Write("Vem vill du ta bort (ange namn): ");
-                    string villTaBort = Console.ReadLine();
-                    int found = -1;
-                    for (int i = 0; i < Dict.Count(); i++)
-                    {
-                        if (Dict[i].namn == villTaBort) found = i;
-                    }
-                    if (found == -1)
-                    {
-                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villTaBort);
-                    }
-                    else
-                    {
-                        Dict.RemoveAt(found);
-                    }
+                    DeletePerson(Dict);
                 }
                 else if (command == "visa")
                 {
@@ -97,6 +83,25 @@ namespace Refactoring_Documentation
                     Console.WriteLine("Okänt kommando: {0}", command);
                 }
             } while (command != "sluta");
+        }
+
+        private static void DeletePerson(List<Person> Dict)
+        {
+            Console.Write("Vem vill du ta bort (ange namn): ");
+            string villTaBort = Console.ReadLine();
+            int found = -1;
+            for (int i = 0; i < Dict.Count(); i++)
+            {
+                if (Dict[i].namn == villTaBort) found = i;
+            }
+            if (found == -1)
+            {
+                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villTaBort);
+            }
+            else
+            {
+                Dict.RemoveAt(found);
+            }
         }
 
         private static void AddNewPerson(List<Person> Dict)
