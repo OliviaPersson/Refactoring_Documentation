@@ -43,11 +43,7 @@ namespace Refactoring_Documentation
                 }
                 else if (command == "visa")
                 {
-                    for (int i = 0; i < Dict.Count(); i++)
-                    {
-                        Person P = Dict[i];
-                        Console.WriteLine("{0}, {1}, {2}, {3}", P.namn, P.adress, P.telefon, P.email);
-                    }
+                    ShowList(Dict);
                 }
                 else if (command == "ändra")
                 {
@@ -83,6 +79,15 @@ namespace Refactoring_Documentation
                     Console.WriteLine("Okänt kommando: {0}", command);
                 }
             } while (command != "sluta");
+        }
+
+        private static void ShowList(List<Person> Dict)
+        {
+            for (int i = 0; i < Dict.Count(); i++)
+            {
+                Person P = Dict[i];
+                Console.WriteLine("{0}, {1}, {2}, {3}", P.namn, P.adress, P.telefon, P.email);
+            }
         }
 
         private static void DeletePerson(List<Person> Dict)
