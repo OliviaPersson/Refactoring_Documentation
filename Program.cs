@@ -10,14 +10,14 @@ namespace Refactoring_Documentation
 {
     class Person
     {
-        public string namn, adress, telefon, email;
+        public string name, address, number, email;
         public Person(string N, string A, string T, string E)
         {
-            namn = N; adress = A; telefon = T; email = E;
+            name = N; address = A; number = T; email = E;
         }
         public void Print()
         {
-            Console.WriteLine("{0}, {1}, {2}, {3}", namn, adress, telefon, email);
+            Console.WriteLine("{0}, {1}, {2}, {3}", name, address, number, email);
         }
     }
     class Program
@@ -64,28 +64,28 @@ namespace Refactoring_Documentation
         private static void UpdatePersonInList(List<Person> Dict)
         {
             Console.Write("Vem vill du ändra (ange namn): ");
-            string villÄndra = Console.ReadLine();
+            string personToChange = Console.ReadLine();
             int found = -1;
             for (int i = 0; i < Dict.Count(); i++)
             {
-                if (Dict[i].namn == villÄndra) found = i;
+                if (Dict[i].name == personToChange) found = i;
             }
             if (found == -1)
             {
-                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villÄndra);
+                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", personToChange);
             }
             else
             {
                 Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
-                string fältAttÄndra = Console.ReadLine();
-                Console.Write("Vad vill du ändra {0} på {1} till: ", fältAttÄndra, villÄndra);
-                string nyttVärde = Console.ReadLine();
-                switch (fältAttÄndra)
+                string fieldToChange = Console.ReadLine();
+                Console.Write("Vad vill du ändra {0} på {1} till: ", fieldToChange, personToChange);
+                string newValue = Console.ReadLine();
+                switch (fieldToChange)
                 {
-                    case "namn": Dict[found].namn = nyttVärde; break;
-                    case "adress": Dict[found].adress = nyttVärde; break;
-                    case "telefon": Dict[found].telefon = nyttVärde; break;
-                    case "email": Dict[found].email = nyttVärde; break;
+                    case "namn": Dict[found].name = newValue; break;
+                    case "adress": Dict[found].address = newValue; break;
+                    case "telefon": Dict[found].number = newValue; break;
+                    case "email": Dict[found].email = newValue; break;
                     default: break;
                 }
             }
@@ -103,15 +103,15 @@ namespace Refactoring_Documentation
         private static void DeletePerson(List<Person> Dict)
         {
             Console.Write("Vem vill du ta bort (ange namn): ");
-            string villTaBort = Console.ReadLine();
+            string personToDelete = Console.ReadLine();
             int found = -1;
             for (int i = 0; i < Dict.Count(); i++)
             {
-                if (Dict[i].namn == villTaBort) found = i;
+                if (Dict[i].name == personToDelete) found = i;
             }
             if (found == -1)
             {
-                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", villTaBort);
+                Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", personToDelete);
             }
             else
             {
@@ -125,12 +125,12 @@ namespace Refactoring_Documentation
             Console.Write("  1. ange namn:    ");
             string name = Console.ReadLine();
             Console.Write("  2. ange adress:  ");
-            string adress = Console.ReadLine();
+            string address = Console.ReadLine();
             Console.Write("  3. ange telefon: ");
-            string telefon = Console.ReadLine();
+            string number = Console.ReadLine();
             Console.Write("  4. ange email:   ");
             string email = Console.ReadLine();
-            Dict.Add(new Person(name, adress, telefon, email));
+            Dict.Add(new Person(name, address, number, email));
         }
 
         private static void LoadFile(List<Person> Dict)
