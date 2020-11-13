@@ -18,6 +18,17 @@ namespace Refactoring_Documentation
         {
             name = N; address = A; number = T; email = E;
         }
+        public Person()
+        {
+            Console.Write(" 1. ange namn:  ");
+            name = Console.ReadLine();
+            Console.Write(" 2. ange adress:  ");
+            address = Console.ReadLine();
+            Console.Write(" 3. ange telefon: ");
+            number = Console.ReadLine();
+            Console.Write(" 4. ange email:   ");
+            email = Console.ReadLine();
+        }
         /* METHOD: Print 
          * PURPOSE: Prints the attributes to cmd
          */
@@ -140,15 +151,7 @@ namespace Refactoring_Documentation
         private static void AddNewPerson(List<Person> Dict)
         {
             Console.WriteLine("Lägger till ny person");
-            Console.Write("  1. ange namn:    ");
-            string name = Console.ReadLine();
-            Console.Write("  2. ange adress:  ");
-            string address = Console.ReadLine();
-            Console.Write("  3. ange telefon: ");
-            string number = Console.ReadLine();
-            Console.Write("  4. ange email:   ");
-            string email = Console.ReadLine();
-            Dict.Add(new Person(name, address, number, email));
+            Dict.Add(new Person());
         }
         /* METHOD: LoadFile (static)
          * PURPOSE: Loads file, split when '#' and stores the person object in list Dict
