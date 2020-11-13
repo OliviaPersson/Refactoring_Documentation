@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Refactoring_Documentation
 {
     /* CLASS: Person
-     * PURPOSE: An object Person whith defined attributes and a constructor that will run when the class is initiated
+     * PURPOSE: Person class whith defined attributes and a constructor that will run when the class is initiated
      */
     class Person
     {
@@ -35,6 +35,17 @@ namespace Refactoring_Documentation
         public void Print()
         {
             Console.WriteLine("{0}, {1}, {2}, {3}", name, address, number, email);
+        }
+        public void UpdateField(string fieldToChange, string newValue)
+        {
+            switch (fieldToChange)
+            {
+                case "namn": name = newValue; break;
+                case "adress": address = newValue; break;
+                case "telefon": number = newValue; break;
+                case "email": email = newValue; break;
+                default: break;
+            }
         }
     }
     class Program
@@ -100,14 +111,7 @@ namespace Refactoring_Documentation
                 string fieldToChange = Console.ReadLine();
                 Console.Write("Vad vill du ändra {0} på {1} till: ", fieldToChange, personToChange);
                 string newValue = Console.ReadLine();
-                switch (fieldToChange)
-                {
-                    case "namn": Dict[found].name = newValue; break;
-                    case "adress": Dict[found].address = newValue; break;
-                    case "telefon": Dict[found].number = newValue; break;
-                    case "email": Dict[found].email = newValue; break;
-                    default: break;
-                }
+                Dict[found].UpdateField(fieldToChange, newValue);
             }
         }
         /* METHOD: ShowList (static)
