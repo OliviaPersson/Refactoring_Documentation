@@ -18,6 +18,9 @@ namespace Refactoring_Documentation
         {
             name = N; address = A; number = T; email = E;
         }
+        /* CONSTRUCTOR: Person
+         * PURPOSE: When class is initialized without attributes, asking user for input and sets the attributes
+         */
         public Person()
         {
             Console.Write(" 1. ange namn:  ");
@@ -36,6 +39,10 @@ namespace Refactoring_Documentation
         {
             Console.WriteLine("{0}, {1}, {2}, {3}", name, address, number, email);
         }
+        /* METHOD: UpdateField
+         * PURPOSE: Depending on the user input changes the value of an attribute
+         * PARAMETERS: fieldToChange - stores user input of which attribute to change, newValue - stores user input that will be set to attribute
+         */
         public void UpdateField(string fieldToChange, string newValue)
         {
             switch (fieldToChange)
