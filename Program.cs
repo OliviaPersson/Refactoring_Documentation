@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 namespace Refactoring_Documentation
 {
     /* CLASS: Person
-     * PURPOSE: Person class whith defined attributes and a constructor that will run when the class is initiated
+     * PURPOSE: Person class whith defined attributes and two constructors that will run when the class is initiated
      */
     class Person
     {
         public string name, address, number, email;
+        /* CONSTRUCTOR: Person
+         * PURPOSE: When class is initialized with attributes, sets the attributes for the person class
+         */
         public Person(string N, string A, string T, string E)
         {
             name = N; address = A; number = T; email = E;
@@ -33,7 +36,7 @@ namespace Refactoring_Documentation
             email = Console.ReadLine();
         }
         /* METHOD: Print 
-         * PURPOSE: Prints the attributes to cmd
+         * PURPOSE: Prints the attributes for a person
          */
         public void Print()
         {
@@ -41,7 +44,7 @@ namespace Refactoring_Documentation
         }
         /* METHOD: UpdateField
          * PURPOSE: Depending on the user input changes the value of an attribute
-         * PARAMETERS: fieldToChange - stores user input of which attribute to change, newValue - stores user input that will be set to attribute
+         * PARAMETERS: fieldToChange - stores user input of which attribute to change, newValue - stores user input that will be set to the attribute
          */
         public void UpdateField(string fieldToChange, string newValue)
         {
@@ -176,9 +179,7 @@ namespace Refactoring_Documentation
                 while (fileStream.Peek() >= 0)
                 {
                     string line = fileStream.ReadLine();
-                    // Console.WriteLine(line);
                     string[] word = line.Split('#');
-                    // Console.WriteLine("{0}, {1}, {2}, {3}", word[0], word[1], word[2], word[3]);
                     Person P = new Person(word[0], word[1], word[2], word[3]);
                     Dict.Add(P);
                 }
